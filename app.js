@@ -1,20 +1,39 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const mongoose = require("mongoose");
+const passport = require("passport");
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const authRouter = require("./auth/auth");
 
-var app = express();
+const app = express();
+require("dotenv").config();
 
-app.use(logger('dev'));
+mongoose
+  .connect("mongodb://localhost:27017/devops_accelerator", {
+    useNewUrlParser: true,
+    useCreateIndex: true
+  })
+  .then(() => {
+    console.log("Mongodb Connected");
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(passport.initialize());
+app.use(passport.session());
+require("./auth/passport")(passport);
+
+if (process.env.NODE_ENV === "production")
+  app.use(express.static(path.join(__dirname, "public")));
+
+app.use("/api/auth/", authRouter);
 
 module.exports = app;

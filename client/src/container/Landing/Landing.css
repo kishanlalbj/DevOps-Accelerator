@@ -1,0 +1,67 @@
+.hero {
+  min-height: 100vh;
+  /* background-image: linear-gradient(to right, #87b6ed, #66a1e8); */
+  background-color: ghostwhite;
+  position: relative;
+}
+.hero-textbox {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.hero-main-text {
+  font-size: 48px;
+  letter-spacing: 2px;
+  color: black;
+  display: block;
+  text-align: center;
+}
+.form {
+  margin-top: 40%;
+  margin-left: 5%;
+}
+.hero-sub-text {
+  font-size: 16px;
+  color: black;
+  margin-top: 50px;
+}
+.top-nav {
+  padding-top: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.logo {
+  float: left;
+  color: #fff;
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.navs {
+  float: right;
+}
+
+.navs a {
+  margin-top: 20% !important;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.navs a:hover {
+  color: #f4f4f4;
+  text-decoration: none;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: "none";
+}
+.logo a:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
