@@ -2,7 +2,7 @@
 
 ### Under Development
 
-A funny web app which will (hopefully) sets up a end to end DevOps solution for a web applications.
+A funny web app which (hopefully) sets up an end to end DevOps solution for a web applications.
 
 The following tools are connected in the solution on its alpha release
 
@@ -22,14 +22,14 @@ The following tools are connected in the solution on its alpha release
 
   1. Sonarqube Cloud
 
-- Nexus
+- Artifactory Storage
 
   1. Nexus Artifactory
 
-- Deployment
+- Deployment Tools
 
-  1. Ansible :stuck_out_tongue_winking_eye:
+  1. Ansible
 
 Not a big deal. Right ? but it is :worried:
 
-If you don't find any update on the repository after a month. Then consider it is dropped :disappointed:
+If you don't find any update on this repository even after a month. Then consider the project is dropped :disappointed:
