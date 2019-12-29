@@ -1,0 +1,34 @@
+[
+  {
+    "toolName": "Jenkins",
+    "URL": "http://localhost:8080",
+    "username": "username",
+    "password": "password",
+    "APIKey": "API Key",
+    "authMethod": "password"
+  },
+  {
+    "toolName": "SonarQube",
+    "URL": "http://localhost:9000",
+    "username": "username",
+    "password": "password",
+    "APIKey": "APIKey",
+    "authMethod": "APIKey"
+  },
+  {
+    "toolName": "Nexus",
+    "URL": "http://localhost:8081/nexus",
+    "username": "username",
+    "password": "password",
+    "APIKey": "API Key",
+    "authMethod": "password"
+  },
+  {
+    "toolName": "Github",
+    "URL": "http://api.github.com",
+    "username": "username",
+    "password": "password",
+    "APIKey": "API Key",
+    "authMethod": "password"
+  }
+]

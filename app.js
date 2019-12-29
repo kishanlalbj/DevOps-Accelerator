@@ -34,6 +34,9 @@ require("./auth/passport")(passport);
 if (process.env.NODE_ENV === "production")
   app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 app.use("/api/auth/", authRouter);
 app.use("/api/engines", engineRouter);
 

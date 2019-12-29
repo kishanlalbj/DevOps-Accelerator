@@ -1,0 +1,52 @@
+[
+  {
+    "engineID": "5ea2487fjadenlmb23a6",
+    "name": "lnx024d",
+    "IP": "127.0.0.0",
+    "username": "username",
+    "password": "passsword",
+    "OS": "linux",
+    "envName": "DEV",
+    "tag": ["app", "web", "dev"]
+  },
+  {
+    "engineID": "5ea2487fjadenlmb23a6",
+    "name": "lnx024t1",
+    "IP": "127.0.0.0",
+    "username": "username",
+    "password": "passsword",
+    "OS": "linux",
+    "envName": "QA",
+    "tag": ["web", "app", "QA", "test"]
+  },
+  {
+    "engineID": "5ea2487fjadenlmb23a6",
+    "name": "lnx024t2",
+    "IP": "127.0.0.0",
+    "username": "username",
+    "password": "passsword",
+    "OS": "linux",
+    "envName": "UAT",
+    "tag": ["web", "app", "UAT", "server123"]
+  },
+  {
+    "engineID": "5ea2487fjadenlmb23a6",
+    "name": "lnx024t3",
+    "IP": "127.0.0.0",
+    "username": "username",
+    "password": "passsword",
+    "OS": "linux",
+    "envName": "UAT",
+    "tag": ["web", "app", "UAT", "support"]
+  },
+  {
+    "engineID": "5ea2487fjadenlmb23a6",
+    "name": "lnx024t3",
+    "IP": "127.0.0.0",
+    "username": "username",
+    "password": "passsword",
+    "OS": "linux",
+    "envName": "PROD",
+    "tag": ["web", "app", "PROD", "server1"]
+  }
+]
