@@ -5,6 +5,7 @@
     "IP": "127.0.0.0",
     "username": "username",
     "password": "passsword",
+    "authMethod": "password",
     "OS": "linux",
     "envName": "DEV",
     "tag": ["app", "web", "dev"]
@@ -15,6 +16,7 @@
     "IP": "127.0.0.0",
     "username": "username",
     "password": "passsword",
+    "authMethod": "password",
     "OS": "linux",
     "envName": "QA",
     "tag": ["web", "app", "QA", "test"]
@@ -25,6 +27,7 @@
     "IP": "127.0.0.0",
     "username": "username",
     "password": "passsword",
+    "authMethod": "password",
     "OS": "linux",
     "envName": "UAT",
     "tag": ["web", "app", "UAT", "server123"]
@@ -35,6 +38,7 @@
     "IP": "127.0.0.0",
     "username": "username",
     "password": "passsword",
+    "authMethod": "password",
     "OS": "linux",
     "envName": "UAT",
     "tag": ["web", "app", "UAT", "support"]
@@ -45,6 +49,7 @@
     "IP": "127.0.0.0",
     "username": "username",
     "password": "passsword",
+    "authMethod": "password",
     "OS": "linux",
     "envName": "PROD",
     "tag": ["web", "app", "PROD", "server1"]

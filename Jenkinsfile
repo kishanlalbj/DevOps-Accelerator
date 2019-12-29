@@ -1,4 +1,5 @@
 pipeline {
+    
     agent {
         label "linux"
     }
@@ -16,6 +17,12 @@ pipeline {
             }
         }
 
+         stage("Build") {
+            steps {
+                echo "Build React"
+            }
+        }
+
         stage("Tests") {
             steps {
                 echo "Mocha and Chai Tests"
@@ -27,11 +34,7 @@ pipeline {
                 echo "Code Quality"
             }
         }
-        stage("Build") {
-            steps {
-                echo "Build React"
-            }
-        }
+       
 
         stage("Deploy to DEV") {
             steps {

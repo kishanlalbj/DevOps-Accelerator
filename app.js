@@ -11,7 +11,7 @@ const app = express();
 require("dotenv").config();
 
 mongoose
-  .connect("mongodb://localhost:27017/devops_accelerator", {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useCreateIndex: true
   })

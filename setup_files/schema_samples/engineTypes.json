@@ -1,0 +1,21 @@
+[
+  {
+    "_id": "5faetyqd89rut753eadf5",
+    "engineType": "Classic",
+    "toolsets": ["jira", "github", "jenkins", "sonarcloud", "nexus", "ansible"]
+  },
+  {
+    "_id": "5fteui8q89rt75eaeg7",
+    "engineType": "Premium",
+    "toolsets": [
+      "jira",
+      "bitbucket",
+      "jenkins",
+      "sonarqube",
+      "nexus",
+      "ansible",
+      "grafana",
+      "elk"
+    ]
+  }
+]
