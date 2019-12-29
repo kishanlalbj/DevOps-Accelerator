@@ -50,7 +50,7 @@ const Login = props => {
           Register
         </Button>
         &nbsp;&nbsp;
-        {/* <a href="">Forgot Password ?</a> */}
+        <a>Forgot Password ?</a>
       </Form>
     </div>
   );

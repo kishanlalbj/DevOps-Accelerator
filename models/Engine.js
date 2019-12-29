@@ -6,18 +6,24 @@ const EngineSchema = new Schema({
     type: String,
     required: true
   },
+  description: {
+    type: String
+  },
+  status: {
+    type: String
+  },
   user: {
     type: Schema.Types.ObjectId,
     ref: "users"
   },
+  blueprint: {
+    type: String,
+    required: true
+  },
   tools: [
     {
-      nickName: {
+      name: {
         type: String
-      },
-      toolId: {
-        type: Schema.Types.ObjectId,
-        ref: "tools"
       }
     }
   ]

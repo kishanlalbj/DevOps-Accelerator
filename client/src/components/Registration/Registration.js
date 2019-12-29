@@ -18,6 +18,14 @@ const Registration = props => {
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
+        <Form.Group>
+          <Form.Label>First Name</Form.Label>
+          <Form.Control type="text" placeholder="First Name" />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control type="text" placeholder="Last Name" />
+        </Form.Group>
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" />
@@ -40,7 +48,7 @@ const Registration = props => {
           Sign Up
         </Button>
         &nbsp;&nbsp; &nbsp;&nbsp;
-        <a href="#">Terms and conditions</a>
+        <a>Terms and conditions</a>
         <p>
           Already have an account ? &nbsp;
           <Button

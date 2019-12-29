@@ -1,7 +1,7 @@
 const Engine = require("../../models/Engine");
 
-const getEngines = (successCB, errorCB) => {
-  Engine.find()
+const getEngines = (userid, successCB, errorCB) => {
+  Engine.find({ user: userid })
     .then(engines => {
       successCB(engines);
     })
@@ -11,11 +11,25 @@ const getEngines = (successCB, errorCB) => {
 };
 
 const addEngine = (data, successCB, errorCB) => {
-  let newEngine = {
-    name: data.engineName
-  };
+  let newEngine = new Engine({
+    name: data.name,
+    description: data.description,
+    user: data.user,
+    blueprint: data.blueprint,
+    status: data.status,
+    tools: data.tools
+  });
+  newEngine
+    .save()
+    .then(engine => {
+      successCB(engine);
+    })
+    .catch(err => {
+      errorCB(err);
+    });
 };
 
 module.exports = {
-  getEngines
+  getEngines,
+  addEngine
 };

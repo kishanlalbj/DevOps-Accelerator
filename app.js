@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 
 const authRouter = require("./auth/auth");
-
+const engineRouter = require("./routes/engines/engineRouter");
 const app = express();
 require("dotenv").config();
 
@@ -35,5 +35,6 @@ if (process.env.NODE_ENV === "production")
   app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/auth/", authRouter);
+app.use("/api/engines", engineRouter);
 
 module.exports = app;

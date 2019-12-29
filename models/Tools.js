@@ -6,6 +6,14 @@ const toolSchema = new Schema({
     type: String,
     required: true
   },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "users"
+  },
+  toolType: {
+    type: String,
+    require: true
+  },
   toolUrl: {
     type: String,
     required: true

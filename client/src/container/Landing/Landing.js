@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import Login from "../../components/Login/Login";
 import Registration from "../../components/Registration/Registration";
 import axios from "axios";
+import setAuthHeader from "../../utils/setAuthHeader";
 
 class Landing extends Component {
   state = {
@@ -28,6 +29,7 @@ class Landing extends Component {
       .then(response => {
         if (response.data.success) {
           localStorage.setItem("jwt-token", `Bearer ${response.data.token}`);
+          setAuthHeader(`Bearer ${response.data.token}`);
           this.props.history.push("/home");
         } else {
           console.log("Login Failed");
