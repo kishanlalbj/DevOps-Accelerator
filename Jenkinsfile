@@ -35,7 +35,6 @@ pipeline {
             }
         }
        
-
         stage("Deploy to DEV") {
             steps {
                 echo "Deploy to DEV"
