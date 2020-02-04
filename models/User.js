@@ -10,12 +10,6 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-    length: 10
-  },
   isAdmin: {
     type: Boolean,
     default: false

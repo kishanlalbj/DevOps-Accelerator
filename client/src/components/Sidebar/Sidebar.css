@@ -1,0 +1,13 @@
+.list-item {
+  width: 100%;
+  padding: 5px;
+  font-weight: 700;
+  cursor: pointer;
+  font-style: none;
+  text-decoration: none !important;
+}
+
+.list-item:hover {
+  background-color: dimgrey;
+  color: white;
+}

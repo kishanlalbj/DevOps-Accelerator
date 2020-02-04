@@ -1,6 +1,6 @@
 FROM nodejs
 
-WORKDIR /
+WORKDIR /kishan
 
 COPY . .
 

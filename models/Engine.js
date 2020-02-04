@@ -10,23 +10,31 @@ const EngineSchema = new Schema({
     type: String
   },
   status: {
-    type: String
+    type: String,
+    default: "active"
   },
-  user: {
+  blueprintid: {
     type: Schema.Types.ObjectId,
-    ref: "users"
+    ref: "blueprints"
   },
-  blueprint: {
+  blueprintName: {
     type: String,
     required: true
   },
+  userid: {
+    type: Schema.Types.ObjectId,
+    ref: "users"
+  },
   tools: [
     {
-      name: {
-        type: String
-      }
+      type: Schema.Types.ObjectId,
+      ref: "tools"
     }
-  ]
+  ],
+  createdOn: {
+    type: Date,
+    default: Date.now()
+  }
 });
 
 const EngineModel = mongoose.model("Engine", EngineSchema);

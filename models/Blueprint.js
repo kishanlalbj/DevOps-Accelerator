@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const Blueptrint = new Schema({
+const BlueptrintSChema = new Schema({
   name: {
     type: String,
     required: true
@@ -14,8 +14,8 @@ const Blueptrint = new Schema({
     type: String,
     required: true
   },
-  blueprintPath: {
-    type: String,
+  blueprintData: {
+    type: Object,
     required: true
   },
   createdOn: {
@@ -23,3 +23,7 @@ const Blueptrint = new Schema({
     default: Date.now()
   }
 });
+
+const Blueprint = mongoose.model("blueprint", BlueptrintSChema);
+
+module.exports = Blueprint;

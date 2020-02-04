@@ -10,12 +10,15 @@ class Landing extends Component {
   state = {
     login: true,
     email: "",
-    password: ""
+    password: "",
+    firstName: "",
+    lastName: ""
   };
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
   onLogin = e => {
     e.preventDefault();
     let { email, password } = this.state;
@@ -42,7 +45,24 @@ class Landing extends Component {
 
   onSignup = () => {
     console.log("Signed Up");
-    this.toggleForm();
+
+    let { firstName, lastName, email, password } = this.state;
+    let obj = {
+      firstName,
+      lastName,
+      email,
+      password
+    };
+
+    axios
+      .post("/api/auth/register", obj)
+      .then(response => {
+        console.log(response.data);
+        this.toggleForm();
+      })
+      .catch(err => {
+        console.log(err.response.data);
+      });
   };
 
   toggleForm = () => {

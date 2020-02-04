@@ -1,31 +1,24 @@
 import React from "react";
-import { Nav, ListGroup } from "react-bootstrap";
 
-const SideBar = props => {
+import "./Sidebar.css";
+
+const Sidebar = props => {
   return (
     <div
       style={{
         width: props.width + "px",
-        height: "100vh",
-        backgroundColor: props.backgroundColor
+        height: "100%",
+        backgroundColor: props.backgroundColor || "#ebeced"
       }}
     >
       {props.lists.map((list, index) => {
         return (
           <div
+            onClick={() => props.onRedirect(list.name)}
             key={index}
-            style={{
-              width: "100%",
-              paddingTop: "10px"
-            }}
+            className="list-item"
           >
-            <p
-              style={{
-                marginLeft: "10px"
-              }}
-            >
-              {list.name}
-            </p>
+            {list.name}
           </div>
         );
       })}
@@ -33,4 +26,4 @@ const SideBar = props => {
   );
 };
 
-export default SideBar;
+export default Sidebar;

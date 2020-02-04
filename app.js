@@ -7,6 +7,7 @@ const passport = require("passport");
 
 const authRouter = require("./auth/auth");
 const engineRouter = require("./routes/engines/engineRouter");
+const blueprintRouter = require("./routes/blueprints/blueprintRouter");
 const app = express();
 require("dotenv").config();
 
@@ -34,10 +35,8 @@ require("./auth/passport")(passport);
 if (process.env.NODE_ENV === "production")
   app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
 app.use("/api/auth/", authRouter);
 app.use("/api/engines", engineRouter);
+app.use("/api/blueprints", blueprintRouter);
 
 module.exports = app;

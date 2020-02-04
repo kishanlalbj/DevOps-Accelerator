@@ -37,21 +37,19 @@ class Nav extends Component {
   render() {
     const { isAuthenticated } = this.state;
     return (
-      <div>
-        <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="#home">{this.props.brand}</Navbar.Brand>
-          {isAuthenticated ? (
-            <>
-              <Navbar.Toggle />
-              <Navbar.Collapse className="justify-content-end">
-                <p style={{ color: "white" }} onClick={this.logout}>
-                  Logout
-                </p>
-              </Navbar.Collapse>
-            </>
-          ) : null}
-        </Navbar>
-      </div>
+      <Navbar bg="dark" variant="dark" style={{ height: "50px" }}>
+        <Navbar.Brand>{this.props.brand}</Navbar.Brand>
+        {isAuthenticated ? (
+          <>
+            <Navbar.Toggle />
+            <Navbar.Collapse className="justify-content-end">
+              <p style={{ color: "white" }} onClick={this.logout}>
+                Logout
+              </p>
+            </Navbar.Collapse>
+          </>
+        ) : null}
+      </Navbar>
     );
   }
 }
