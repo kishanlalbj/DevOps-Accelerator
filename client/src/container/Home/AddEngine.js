@@ -8,15 +8,18 @@ class AddEngine extends Component {
     description: "",
     github_username: "",
     github_apikey: "",
+    github_password: "",
+    github_reponame: "",
     github_tech_stack: "MERN",
-    blueprint: "default"
+    blueprint: "",
+    blueprints: []
   };
 
   addEngine = () => {
     let newEngine = {
       name: this.state.name,
       description: this.state.description,
-      blueprint: this.state.blueprint
+      blueprintName: this.state.blueprint
     };
 
     Axios.post("/api/engines/add", newEngine)
@@ -36,7 +39,30 @@ class AddEngine extends Component {
     this.props.history.push("/home");
   };
 
+  componentDidMount = () => {
+    fetch("/api/blueprints/all")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        let copy = [...this.state.blueprints];
+        copy = data;
+        console.log(copy);
+        this.setState({ blueprints: copy });
+      });
+  };
+
   render() {
+    const {
+      blueprints,
+      name,
+      description,
+      github_apikey,
+      github_password,
+      github_reponame,
+      github_username,
+      github_tech_stack
+    } = this.state;
+
     return (
       <div>
         <Form>
@@ -49,11 +75,10 @@ class AddEngine extends Component {
                   type="text"
                   placeholder="Project Name"
                   name="name"
-                  value={this.state.name}
+                  value={name}
                   onChange={this.onChange}
                 ></Form.Control>
               </Form.Group>
-
               <Form.Group>
                 <Form.Label>Description</Form.Label>
                 <Form.Control
@@ -61,80 +86,23 @@ class AddEngine extends Component {
                   rows="3"
                   name="description"
                   placeholder="Description"
-                  value={this.state.description}
+                  value={description}
                   onChange={this.onChange}
                 ></Form.Control>
               </Form.Group>
-
               <Form.Group>
                 <Form.Label>Blueprint</Form.Label>
-                <Form.Control
-                  disabled
-                  type="text"
+                <select
                   name="blueprint"
-                  placeholder="Blueprint"
+                  onChange={this.onChange}
                   value={this.state.blueprint}
-                  onChange={this.onChange}
-                ></Form.Control>
-              </Form.Group>
-
-              <h5> Github</h5>
-
-              <Form.Group>
-                <Form.Label>Github Instance</Form.Label>
-                <Form.Control
-                  disabled
-                  type="text"
-                  name="github_instance"
-                  placeholder="Tech Stack"
-                  value="http://github.com"
-                  onChange={this.onChange}
-                ></Form.Control>
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="github_username"
-                  placeholder="Github Username"
-                  value={this.state.github_username}
-                  onChange={this.onChange}
-                ></Form.Control>
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="github_password"
-                  placeholder="Github Password"
-                  value={this.state.github_password}
-                  onChange={this.onChange}
-                ></Form.Control>
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Label>Repository Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="repo_name"
-                  placeholder="Repository Name"
-                  value={this.state.github_reponame}
-                  onChange={this.onChange}
-                ></Form.Control>
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Label>Base Code Tech Stack</Form.Label>
-                <Form.Control
-                  type="text"
-                  disabled
-                  name="github_tech_stack"
-                  placeholder="Base Code Stack"
-                  value={this.state.github_tech_stack}
-                  onChange={this.onChange}
-                ></Form.Control>
+                  className="select-dd"
+                >
+                  <option>Select Blueprint</option>
+                  {blueprints.map(bp => {
+                    return <option key={bp._id}>{bp.name}</option>;
+                  })}
+                </select>
               </Form.Group>
 
               <Form.Group>
@@ -152,6 +120,59 @@ class AddEngine extends Component {
 
             <Col md={4}>
               <h5>Jenkins</h5>
+              <h5> Github</h5>
+              <Form.Group>
+                <Form.Label>Github Instance</Form.Label>
+                <Form.Control
+                  disabled
+                  type="text"
+                  name="github_instance"
+                  placeholder="Tech Stack"
+                  value="http://github.com"
+                  onChange={this.onChange}
+                ></Form.Control>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="github_username"
+                  placeholder="Github Username"
+                  value={github_username}
+                  onChange={this.onChange}
+                ></Form.Control>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="github_password"
+                  placeholder="Github Password"
+                  value={github_password}
+                  onChange={this.onChange}
+                ></Form.Control>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Repository Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="repo_name"
+                  placeholder="Repository Name"
+                  value={github_reponame}
+                  onChange={this.onChange}
+                ></Form.Control>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Base Code Tech Stack</Form.Label>
+                <Form.Control
+                  type="text"
+                  disabled
+                  name="github_tech_stack"
+                  placeholder="Base Code Stack"
+                  value={github_tech_stack}
+                  onChange={this.onChange}
+                ></Form.Control>
+              </Form.Group>
             </Col>
             <Col md={4}>
               <h5>SonarQube</h5>

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const BlueptrintSChema = new Schema({
+const BlueptrintSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -24,6 +24,6 @@ const BlueptrintSChema = new Schema({
   }
 });
 
-const Blueprint = mongoose.model("blueprint", BlueptrintSChema);
+const Blueprint = mongoose.model("blueprint", BlueptrintSchema);
 
 module.exports = Blueprint;

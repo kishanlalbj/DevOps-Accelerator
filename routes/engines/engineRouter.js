@@ -19,11 +19,12 @@ router.post(
         status: req.body.status,
         tools: req.body.tools
       };
-
       engineController.addEngine(
         newEngine,
         engine => {
-          res.send(engine);
+          engineController.startEngine(engine, response => {
+            res.send(engine);
+          });
         },
         error => {
           throw error;

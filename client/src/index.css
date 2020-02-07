@@ -3,3 +3,10 @@ body {
   margin: 0;
   height: 100%;
 }
+
+.select-dd {
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}

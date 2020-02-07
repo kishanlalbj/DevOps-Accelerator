@@ -29,7 +29,12 @@ const addEngine = (data, successCB, errorCB) => {
     });
 };
 
+const startEngine = (data, successCB, errorCB) => {
+  successCB(data);
+};
+
 module.exports = {
   getEngines,
-  addEngine
+  addEngine,
+  startEngine
 };

@@ -17,6 +17,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Users from "./Users/Users";
 import Tools from "./Tools/Tools";
+import Footer from "../components/Footer/Footer";
 
 class App extends React.Component {
   constructor(props) {
@@ -64,7 +65,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Row>
-            <Col md={2} style={{ height: "90vh" }}>
+            <Col md={2} style={{ height: "95vh" }}>
               <Sidebar
                 onRedirect={this.redirectTo}
                 lists={[
@@ -72,6 +73,7 @@ class App extends React.Component {
                   { name: "Users" },
                   { name: "Blueprints" },
                   { name: "Tools" }
+                  // { name: "Credentials" }
                 ]}
               ></Sidebar>
             </Col>
@@ -91,6 +93,7 @@ class App extends React.Component {
             </Col>
           </Row>
         </Switch>
+        <Footer />
       </>
     );
   }

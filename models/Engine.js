@@ -13,10 +13,6 @@ const EngineSchema = new Schema({
     type: String,
     default: "active"
   },
-  blueprintid: {
-    type: Schema.Types.ObjectId,
-    ref: "blueprints"
-  },
   blueprintName: {
     type: String,
     required: true
