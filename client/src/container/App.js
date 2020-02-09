@@ -1,23 +1,19 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  withRouter
-} from "react-router-dom";
+import {Route, Switch, withRouter} from "react-router-dom";
 import Home from "./Home/Home";
 import Navbar from "../components/Nav/Nav";
 import Landing from "./Landing/Landing";
 import Blueprint from "./Blueprints/Blueprint";
-import { ProtectedRoute } from "../components/ProtectedRoute/ProtectedRoute";
+import {ProtectedRoute} from "../components/ProtectedRoute/ProtectedRoute";
 import setAuthHeader from "../utils/setAuthHeader";
 import Axios from "axios";
 import AddEngine from "./Home/AddEngine";
-import { Container, Row, Col } from "react-bootstrap";
-import Sidebar from "../components/Sidebar/Sidebar";
+import {Col, Row} from "react-bootstrap";
+import Sidebar from "../components/Sidebar/SideBar";
 import Users from "./Users/Users";
 import Tools from "./Tools/Tools";
-import Footer from "../components/Footer/Footer";
+
+// import Footer from "../components/Footer/Footer";
 
 class App extends React.Component {
   constructor(props) {
@@ -83,19 +79,44 @@ class App extends React.Component {
               style={{
                 maxHeight: "90vh",
                 overflowY: "scroll"
-              }}
-            >
-              <ProtectedRoute exact path="/home" component={Home} />
-              <ProtectedRoute exact path="/addengine" component={AddEngine} />
-              <ProtectedRoute exact path="/users" component={Users} />
-              <ProtectedRoute exact path="/blueprints" component={Blueprint} />
-              <ProtectedRoute exact path="/tools" component={Tools} />
-            </Col>
-          </Row>
-        </Switch>
-        <Footer />
-      </>
-    );
+    }
+  }
+  >
+  <
+    ProtectedRoute
+    exact
+    path = "/home"
+    component = {Home}
+    />
+    < ProtectedRoute
+    exact
+    path = "/addengine"
+    component = {AddEngine}
+    />
+    < ProtectedRoute
+    exact
+    path = "/users"
+    component = {Users}
+    />
+    < ProtectedRoute
+    exact
+    path = "/blueprints"
+    component = {Blueprint}
+    />
+    < ProtectedRoute
+    exact
+    path = "/tools"
+    component = {Tools}
+    />
+    < /Col>
+    < /Row>
+    < /Switch>
+    {/* <Footer /> */
+    }
+  <
+    />
+  )
+    ;
   }
 }
 
