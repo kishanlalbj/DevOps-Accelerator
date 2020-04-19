@@ -58,7 +58,15 @@ router.post("/login", (req, res) => {
             { expiresIn: 2000 },
             (err, token) => {
               if (err) throw err;
-              res.json({ success: true, token });
+              res.json({
+                success: true,
+                token,
+                user: {
+                  firstName: user.firstName,
+                  lastName: user.lastName,
+                  email: user.email
+                }
+              });
             }
           );
         } else {
@@ -85,7 +93,7 @@ router.get(
   "/isAuthenticated",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    res.send("authenticated");
+    res.send({ user: req.user });
   }
 );
 module.exports = router;

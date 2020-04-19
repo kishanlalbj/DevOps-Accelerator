@@ -37,6 +37,8 @@ router.get("/:id", (req, res) => {
     blueprintController.getBlueprint(
       req.params.id,
       blueprint => {
+        console.log(blueprint);
+
         res.send(blueprint);
       },
       err => {

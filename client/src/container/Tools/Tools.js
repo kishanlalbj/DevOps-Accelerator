@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Table, Button } from "react-bootstrap";
-import { dimgray } from "color-name";
+
 class Tools extends Component {
   render() {
     return (
@@ -36,7 +36,11 @@ class Tools extends Component {
                   <td>1.</td>
                   <td>Github</td>
                   <td>
-                    <a target="_blank" href="https://github.com">
+                    <a
+                      target="_blank"
+                      href="https://github.com"
+                      rel="noopener noreferrer"
+                    >
                       https://github.com
                     </a>
                   </td>

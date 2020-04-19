@@ -5,6 +5,8 @@ import Login from "../../components/Login/Login";
 import Registration from "../../components/Registration/Registration";
 import axios from "axios";
 import setAuthHeader from "../../utils/setAuthHeader";
+import { connect } from "react-redux";
+import { setCurrentUser } from "../../redux/auth/auth.actions";
 
 class Landing extends Component {
   state = {
@@ -12,7 +14,8 @@ class Landing extends Component {
     email: "",
     password: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    message: ""
   };
 
   onChange = e => {
@@ -33,6 +36,7 @@ class Landing extends Component {
         if (response.data.success) {
           localStorage.setItem("jwt-token", `Bearer ${response.data.token}`);
           setAuthHeader(`Bearer ${response.data.token}`);
+          this.props.setCurrentUser(response.data);
           this.props.history.push("/home");
         } else {
           console.log("Login Failed");
@@ -40,6 +44,7 @@ class Landing extends Component {
       })
       .catch(err => {
         console.log(err.response.data);
+        this.setState({ message: err.response.data.message });
       });
   };
 
@@ -100,6 +105,7 @@ class Landing extends Component {
                   password={this.state.password}
                   onChange={this.onChange}
                   toggleForm={this.toggleForm}
+                  message={this.state.message}
                 />
               ) : (
                 <Registration
@@ -115,4 +121,11 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Landing);

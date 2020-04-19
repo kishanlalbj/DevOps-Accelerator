@@ -28,7 +28,7 @@ const getAllBlueprints = (successCB, errorCB) => {
 };
 
 const getBlueprint = (bpid, successCB, errorCB) => {
-  Blueprint.find({ _id: bpid })
+  Blueprint.findOne({ _id: bpid })
     .then(blueprint => {
       successCB(blueprint);
     })

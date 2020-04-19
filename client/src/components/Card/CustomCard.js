@@ -16,12 +16,17 @@ const CustomCard = props => {
         {props.showFooter ? (
           <Card.Footer>
             <div
-              onClick={() => props.showBlueprint(props.name)}
+              onClick={() => props.onView(props.id)}
               style={{ float: "left", cursor: "pointer" }}
             >
               View
             </div>
-            {/* <div style={{ float: "right", cursor: "pointer" }}></div> */}
+            <div
+              onClick={() => props.onSelect(props.id)}
+              style={{ float: "right", cursor: "pointer" }}
+            >
+              Select
+            </div>
           </Card.Footer>
         ) : null}
       </Card>

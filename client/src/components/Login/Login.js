@@ -43,14 +43,13 @@ const Login = props => {
           Login
         </Button>
         &nbsp;&nbsp;
-        <Button
-          style={{ backgroundColor: "#343a40", border: "none" }}
-          onClick={toggleForm}
+        <span
+          style={{
+            color: "red"
+          }}
         >
-          Register
-        </Button>
-        &nbsp;&nbsp;
-        <a>Forgot Password ?</a>
+          {props.message}
+        </span>
       </Form>
     </div>
   );

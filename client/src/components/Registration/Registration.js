@@ -48,7 +48,6 @@ const Registration = props => {
           Sign Up
         </Button>
         &nbsp;&nbsp; &nbsp;&nbsp;
-        <a>Terms and conditions</a>
         <p>
           Already have an account ? &nbsp;
           <Button

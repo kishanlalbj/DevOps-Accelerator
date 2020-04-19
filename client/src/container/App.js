@@ -1,23 +1,20 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  withRouter
-} from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import Home from "./Home/Home";
 import Navbar from "../components/Nav/Nav";
 import Landing from "./Landing/Landing";
 import Blueprint from "./Blueprints/Blueprint";
-import { ProtectedRoute } from "../components/ProtectedRoute/ProtectedRoute";
 import setAuthHeader from "../utils/setAuthHeader";
-import Axios from "axios";
-import AddEngine from "./Home/AddEngine";
-import { Container, Row, Col } from "react-bootstrap";
+import AddEngine from "./AddEngine/AddEngine";
+import { Row, Col } from "react-bootstrap";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Users from "./Users/Users";
 import Tools from "./Tools/Tools";
 import Footer from "../components/Footer/Footer";
+import { connect } from "react-redux";
+import { setCurrentUser } from "../redux/auth/auth.actions";
+import ViewBlueprint from "./Blueprints/ViewBlueprint";
+import Axios from "axios";
 
 class App extends React.Component {
   constructor(props) {
@@ -38,29 +35,23 @@ class App extends React.Component {
     Axios.get("/api/auth/isAuthenticated")
       .then(response => {
         console.log(response.data);
-        if (response.data === "authenticated") {
-          this.setState({ authenticated: true });
-        } else {
-          this.setState({ authenticated: false });
-        }
+        this.props.setCurrentUser(response.data);
+        this.props.history.push(`/home`);
       })
       .catch(err => {
+        this.props.history.push("/");
         console.log(err);
-        this.setState({ authenticated: false });
       });
   }
 
   redirectTo = page => {
-    this.props.history.push("/".concat(page));
+    this.props.history.push("/".concat(page).toLowerCase());
   };
 
   render() {
     return (
       <>
-        <Navbar
-          brand="DevOps Accelerator"
-          isAuthenticated={this.state.isAuthenticated}
-        />
+        <Navbar brand="DevOps Accelerator" />
 
         <Switch>
           <Route exact path="/" component={Landing} />
@@ -73,7 +64,6 @@ class App extends React.Component {
                   { name: "Users" },
                   { name: "Blueprints" },
                   { name: "Tools" }
-                  // { name: "Credentials" }
                 ]}
               ></Sidebar>
             </Col>
@@ -85,11 +75,12 @@ class App extends React.Component {
                 overflowY: "scroll"
               }}
             >
-              <ProtectedRoute exact path="/home" component={Home} />
-              <ProtectedRoute exact path="/addengine" component={AddEngine} />
-              <ProtectedRoute exact path="/users" component={Users} />
-              <ProtectedRoute exact path="/blueprints" component={Blueprint} />
-              <ProtectedRoute exact path="/tools" component={Tools} />
+              <Route exact path="/home" component={Home} />
+              <Route exact path="/engine/create/:id" component={AddEngine} />
+              <Route exact path="/users" component={Users} />
+              <Route exact path="/blueprints" component={Blueprint} />
+              <Route exact path="/tools" component={Tools} />
+              <Route exact path="/blueprint/:id" component={ViewBlueprint} />
             </Col>
           </Row>
         </Switch>
@@ -99,4 +90,11 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(withRouter(App));

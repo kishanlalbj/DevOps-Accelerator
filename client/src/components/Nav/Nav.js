@@ -2,23 +2,27 @@ import React, { Component } from "react";
 
 import { Navbar } from "react-bootstrap";
 import axios from "axios";
+import { withRouter } from "react-router";
+import { connect } from "react-redux";
+import { setCurrentUser } from "../../redux/auth/auth.actions";
+
 class Nav extends Component {
   state = {
     isAuthenticated: false
   };
 
   componentDidMount() {
-    axios
-      .get("/api/auth/isAuthenticated")
-      .then(response => {
-        if (response.data === "authenticated") {
-          console.log(response.data);
-          this.setState({ isAuthenticated: true });
-        }
-      })
-      .catch(err => {
-        this.setState({ isAuthenticated: false });
-      });
+    // axios
+    //   .get("/api/auth/isAuthenticated")
+    //   .then(response => {
+    //     if (response.data === "authenticated") {
+    //       console.log(response.data);
+    //       this.setState({ isAuthenticated: true });
+    //     }
+    //   })
+    //   .catch(err => {
+    //     this.setState({ isAuthenticated: false });
+    //   });
   }
 
   logout = () => {
@@ -27,7 +31,8 @@ class Nav extends Component {
       .then(response => {
         console.log(response);
         localStorage.removeItem("jwt-token");
-        window.location.href = "/";
+        this.props.setCurrentUser(null);
+        this.props.history.push("/");
       })
       .catch(err => {
         console.log(err);
@@ -35,11 +40,11 @@ class Nav extends Component {
   };
 
   render() {
-    const { isAuthenticated } = this.state;
+    console.log(this.props.currentUser);
     return (
       <Navbar bg="dark" variant="dark" style={{ height: "50px" }}>
         <Navbar.Brand>{this.props.brand}</Navbar.Brand>
-        {isAuthenticated ? (
+        {this.props.currentUser ? (
           <>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
@@ -54,4 +59,15 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+const mapStateToProps = state => ({
+  currentUser: state.auth.currentUser
+});
+
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: () => dispatch(setCurrentUser(null))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Nav));

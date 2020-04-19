@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Button, Row, Col, Table } from "react-bootstrap";
+import { Button, Row, Table } from "react-bootstrap";
 import axios from "axios";
 // import CustomCard from "../../components/Card/CustomCard";
 import moment from "moment";
@@ -15,7 +15,7 @@ class Home extends Component {
     axios
       .get("/api/engines/all")
       .then(response => {
-        console.log("response", response.data);
+        // console.log("response", response.data);
         let copy = [...this.state.engines];
         copy.push(response.data);
         this.setState({ engines: response.data });
@@ -26,12 +26,11 @@ class Home extends Component {
   }
 
   navigate = () => {
-    console.log("clicked");
-    this.props.history.push("/addengine");
+    this.props.history.push("/blueprints");
   };
 
   render() {
-    const { engines, showModal } = this.state;
+    const { engines } = this.state;
     return (
       <>
         <div style={{ marginTop: "1rem" }}>
@@ -58,7 +57,7 @@ class Home extends Component {
                 {engines.map((engine, index) => {
                   return (
                     <tr key={engine._id}>
-                      <td scope="1">{index + 1}</td>
+                      <td>{index + 1}</td>
                       <td>{engine.name}</td>
                       <td>{engine.blueprint}</td>
                       <td>{engine.status}</td>
