@@ -1,0 +1,15 @@
+{
+  "github": {
+    "repositoryName": "TEST",
+    "branches": [
+      {
+        "branchName": "create"
+      }
+    ]
+  },
+  "sonar": {
+    "projectName": "TEST",
+    "projectID": "TES",
+    "qualityGateName": "QG-TEST"
+  }
+}
